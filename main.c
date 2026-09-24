@@ -4,6 +4,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int main(void)
 {
@@ -16,11 +17,19 @@ int main(void)
   int random_int = bind(abc, (struct sockaddr *)&addr, sizeof(addr));
   listen(abc, 10);
   int i = 1;
+  const char *text_to_be_sent = "hey bitch \n";
   socklen_t addr_len = sizeof(struct sockaddr);
   while(i == 1) {
     int abcd = accept(abc, (struct sockaddr *)&addr, &addr_len);
     if (abcd == -1) {
-      i = 0;
+      perror("some oopsie happend");
+      return 1;
     }
+    else {
+      while (i == 1) {
+      send(abcd, text_to_be_sent, strlen(text_to_be_sent) + 1, 0);
+      sleep(1);
+      }
+        }
   }
 }
