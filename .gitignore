@@ -1,3 +1,6 @@
 .vscode/tasks.json
 main
 /main.dSYM
+*.pdf
+.DS_Store
+a.out
