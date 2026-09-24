@@ -13,7 +13,7 @@ int main(void)
   addr.sin_port = htons(6969);
   addr.sin_addr.s_addr = inet_addr("127.0.0.1"); 
   memset(&(addr.sin_zero), '\0', 8); 
-  int random_int = bind(abc, (struct sockaddr *)&addr, sizeof(struct sockaddr));
+  int random_int = bind(abc, (struct sockaddr *)&addr, sizeof(addr));
   listen(abc, 10);
   int i = 1;
   socklen_t addr_len = sizeof(struct sockaddr);
